@@ -1,12 +1,10 @@
-import "./App.css";
-import Homepage from "./pages/Homepage";
+import { RouterProvider } from "react-router-dom";
+import router from "./routes/routes";
 
 function App() {
   return (
     <div data-theme="light">
-      <main className="max-w-[1440px] mx-auto p-5 md:p-12 min-h-[100vh]">
-        <Homepage />
-      </main>
+      <RouterProvider router={router} />
     </div>
   );
 }
