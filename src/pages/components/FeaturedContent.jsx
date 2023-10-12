@@ -1,11 +1,11 @@
 const FeaturedContent = () => {
   return (
-    <section className="py-12 bg-gray-100">
+    <section className="py-12">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold mb-4">Featured Content</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Featured Content Items */}
-          <div className="p-4 bg-white shadow-md rounded">
+          <div className="p-4 bg-gray-200 shadow-md rounded">
             <img
               src="food-image-1.jpg"
               alt="Featured Food Item"
