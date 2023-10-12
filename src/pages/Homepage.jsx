@@ -20,8 +20,8 @@ const Homepage = () => {
       <AboutUs />
 
       <Footer /> */}
-      <Login />
-      {/* <Register /> */}
+      {/* <Login /> */}
+      <Register />
     </div>
   );
 };
