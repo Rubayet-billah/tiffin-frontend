@@ -5,6 +5,8 @@ import {
 } from "firebase/auth";
 import app from "../../firebase/firebase.config";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { setToLocalStorage } from "../../helpers/helpers";
+import { authKey } from "../../constants/constants";
 
 const auth = getAuth(app);
 
@@ -18,7 +20,10 @@ export const registerUser = createAsyncThunk(
         email,
         password
       );
-      const user = userCredential.user;
+      let user = {};
+      user.uid = userCredential.user.uid;
+      user.email = userCredential.user.email;
+      setToLocalStorage(authKey, user);
       return user;
     } catch (error) {
       // Handle registration failure
@@ -37,7 +42,10 @@ export const loginUser = createAsyncThunk(
         email,
         password
       );
-      const user = userCredential.user;
+      let user = {};
+      user.uid = userCredential.user.uid;
+      user.email = userCredential.user.email;
+      setToLocalStorage(authKey, user);
       return user;
     } catch (error) {
       // Handle login failure

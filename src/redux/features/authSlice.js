@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loginUser, registerUser } from "../thunkApi/thunkApi";
+import { getFromLocalStorage } from "../../helpers/helpers";
+import { authKey } from "../../constants/constants";
 
 const initialState = {
-  user: null,
+  user: getFromLocalStorage(authKey),
   error: null,
   loading: false,
 };

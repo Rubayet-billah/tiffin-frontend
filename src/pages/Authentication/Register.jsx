@@ -2,6 +2,7 @@ import { useForm, Controller } from "react-hook-form";
 import signupImg from "../../assets/signup.png";
 import { registerUser } from "../../redux/thunkApi/thunkApi";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const { control, handleSubmit } = useForm();
@@ -60,9 +61,9 @@ const Register = () => {
                 />
                 <p className="text-sm text-gray-400 mt-2">
                   Already have an account?{" "}
-                  <a href="" className="text-blue-600 font-bold">
+                  <Link to="/login" className="text-blue-600 font-bold">
                     Login
-                  </a>
+                  </Link>
                 </p>
               </div>
               <div className="form-control mt-6">

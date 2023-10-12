@@ -1,4 +1,4 @@
-import { testimonials } from "../../constants/constatants";
+import { testimonials } from "../../constants/constants";
 
 const Testimonials = () => {
   // Define an array of sample testimonials (replace with actual data)

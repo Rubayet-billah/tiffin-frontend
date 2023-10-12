@@ -1,3 +1,5 @@
+export const authKey = "USER";
+
 export const testimonials = [
   {
     author: "John Doe",

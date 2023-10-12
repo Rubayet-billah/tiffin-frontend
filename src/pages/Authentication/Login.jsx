@@ -1,12 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useForm, Controller } from "react-hook-form";
 import loginImage from "../../assets/login.png";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../redux/thunkApi/thunkApi";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const { control, handleSubmit } = useForm();
+  const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    // Handle form submission here, 'data' contains input values
+    dispatch(loginUser(data));
     console.log(data);
   };
 
@@ -58,9 +62,9 @@ const Login = () => {
                 />
                 <p className="text-sm text-gray-400 mt-2">
                   Haven't an account?{" "}
-                  <a href="" className="text-blue-600 font-bold">
+                  <Link to="/register" className="text-blue-600 font-bold">
                     Sign Up
-                  </a>
+                  </Link>
                 </p>
               </div>
               <div className="form-control mt-6">
