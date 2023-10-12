@@ -1,11 +1,14 @@
 import { useForm, Controller } from "react-hook-form";
 import signupImg from "../../assets/signup.png";
+import { registerUser } from "../../redux/thunkApi/thunkApi";
+import { useDispatch } from "react-redux";
 
 const Register = () => {
   const { control, handleSubmit } = useForm();
+  const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    // Handle form submission here, 'data' contains input values
+    dispatch(registerUser(data));
     console.log(data);
   };
 
@@ -18,25 +21,6 @@ const Register = () => {
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 rounded">
             <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Name</span>
-                </label>
-                <Controller
-                  name="name"
-                  control={control}
-                  defaultValue="" // Set an initial value if needed
-                  render={({ field }) => (
-                    <input
-                      type="text"
-                      placeholder="name"
-                      className="input input-bordered"
-                      {...field}
-                      required
-                    />
-                  )}
-                />
-              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>

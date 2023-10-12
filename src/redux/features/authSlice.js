@@ -1,28 +1,5 @@
-// // authSlice.js
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import app from "../../../firebase/firebase.config";
-
-const auth = getAuth(app);
-
-// Create an async thunk for user login
-export const loginUser = createAsyncThunk(
-  "auth/loginUser",
-  async ({ email, password }, thunkAPI) => {
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-      return user;
-    } catch (error) {
-      // Handle login failure
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+import { createSlice } from "@reduxjs/toolkit";
+import { loginUser, registerUser } from "../thunkApi/thunkApi";
 
 const initialState = {
   user: null,
@@ -36,6 +13,19 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(registerUser.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(registerUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.error = null;
+        state.loading = false;
+      })
+      .addCase(registerUser.rejected, (state, action) => {
+        state.user = null;
+        state.error = action.payload;
+        state.loading = false;
+      })
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
       })
