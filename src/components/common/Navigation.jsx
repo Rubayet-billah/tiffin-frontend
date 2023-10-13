@@ -48,12 +48,14 @@ const Navigation = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52"
           >
             {menu}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">Tiffin</a>
+        <Link to="/" className="btn btn-ghost upper-case text-2xl font-bold">
+          Tiffin
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{menu}</ul>
@@ -61,7 +63,7 @@ const Navigation = () => {
       <div className="navbar-end">
         {user?.email ? (
           <div className="lg:flex items-center gap-2">
-            <div className="flex items-center gap-1">
+            <div className="items-center gap-1 hidden md:flex">
               <span>{user?.email}</span>
               <div className="avatar online">
                 <div className="w-10 rounded-full">
