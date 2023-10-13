@@ -2,10 +2,14 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import app from "../../firebase/firebase.config";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { setToLocalStorage } from "../../helpers/helpers";
+import {
+  removeFromLocalStorage,
+  setToLocalStorage,
+} from "../../helpers/helpers";
 import { authKey } from "../../constants/constants";
 
 const auth = getAuth(app);
@@ -49,6 +53,25 @@ export const loginUser = createAsyncThunk(
       return user;
     } catch (error) {
       // Handle login failure
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// Create an async thunk for user logout
+export const logoutUser = createAsyncThunk(
+  "auth/logoutUser",
+  async (_, thunkAPI) => {
+    try {
+      // Sign out the user
+      await signOut(auth);
+
+      // Remove user data from local storage
+      removeFromLocalStorage(authKey);
+
+      return null; // Return null or any other relevant data to indicate successful logout
+    } catch (error) {
+      // Handle logout failure
       return thunkAPI.rejectWithValue(error.message);
     }
   }

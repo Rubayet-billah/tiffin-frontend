@@ -1,4 +1,12 @@
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../../redux/thunkApi/thunkApi";
+import userAvatar from "../../assets/userAvatar.png";
+import { Link } from "react-router-dom";
+
 const Navigation = () => {
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch(); // Get the dispatch function
+
   const menu = (
     <>
       <li>
@@ -12,6 +20,12 @@ const Navigation = () => {
       </li>
     </>
   );
+
+  // Define a function to handle user logout
+  const logoutHandler = () => {
+    dispatch(logoutUser()); // Dispatch the logoutUser action
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-start">
@@ -45,7 +59,25 @@ const Navigation = () => {
         <ul className="menu menu-horizontal px-1">{menu}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user?.email ? (
+          <div className="lg:flex items-center gap-2">
+            <div className="flex items-center gap-1">
+              <span>{user?.email}</span>
+              <div className="avatar online">
+                <div className="w-10 rounded-full">
+                  <img src={userAvatar} />
+                </div>
+              </div>
+            </div>
+            <button onClick={logoutHandler} className="btn btn-warning">
+              Log out
+            </button>
+          </div>
+        ) : (
+          <Link to="/login" className="btn">
+            Login
+          </Link>
+        )}
       </div>
     </nav>
   );

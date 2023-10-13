@@ -1,18 +1,29 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useForm, Controller } from "react-hook-form";
 import loginImage from "../../assets/login.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/thunkApi/thunkApi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const Login = () => {
-  const { control, handleSubmit } = useForm();
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
+  const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     dispatch(loginUser(data));
-    console.log(data);
   };
+
+  useEffect(() => {
+    if (user?.email) {
+      toast.success("Logged in successful");
+      navigate("/");
+    }
+  }, [user?.email, navigate]);
 
   return (
     <div>

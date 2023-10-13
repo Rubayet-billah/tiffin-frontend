@@ -10,7 +10,6 @@ import Testimonials from "./components/Testimonials";
 const Homepage = () => {
   return (
     <div>
-      {/* <Navigation />
       <Banner />
 
       <FeaturedContent />
@@ -18,10 +17,8 @@ const Homepage = () => {
       <Testimonials />
 
       <AboutUs />
-
-      <Footer /> */}
       {/* <Login /> */}
-      <Register />
+      {/* <Register /> */}
     </div>
   );
 };

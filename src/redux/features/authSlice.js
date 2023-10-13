@@ -1,5 +1,6 @@
+// authSlice.js
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, registerUser } from "../thunkApi/thunkApi";
+import { loginUser, registerUser, logoutUser } from "../thunkApi/thunkApi";
 import { getFromLocalStorage } from "../../helpers/helpers";
 import { authKey } from "../../constants/constants";
 
@@ -38,6 +39,20 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.user = null;
+        state.error = action.payload;
+        state.loading = false;
+      })
+      .addCase(logoutUser.pending, () => {
+        // Handle logout loading if needed
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        // Clear user data and handle logout success
+        state.user = null;
+        state.error = null;
+        state.loading = false;
+      })
+      .addCase(logoutUser.rejected, (state, action) => {
+        // Handle logout failure, if necessary
         state.error = action.payload;
         state.loading = false;
       });
