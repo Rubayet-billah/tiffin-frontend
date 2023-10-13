@@ -2,7 +2,7 @@
 const ItemCard = ({ item }) => {
   const { name, description, image, category, price, isNew } = item;
   return (
-    <div className="card w-96 bg-base-100 shadow-xl rounded">
+    <div className="card md:w-96 bg-base-100 shadow-xl rounded">
       <figure>
         <img src={image} alt={name} />
       </figure>
