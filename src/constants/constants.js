@@ -50,4 +50,13 @@ export const foodItems = [
     price: 14.99,
     isNew: true,
   },
+  {
+    name: "Caesar Salad",
+    description: "Fresh salad with romaine lettuce and Caesar dressing.",
+    image:
+      "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJ1cmdlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    category: "Salads",
+    price: 7.99,
+    isNew: false,
+  },
 ];

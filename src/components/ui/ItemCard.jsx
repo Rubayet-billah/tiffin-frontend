@@ -9,7 +9,9 @@ const ItemCard = ({ item }) => {
       <div className="card-body">
         <h2 className="card-title">
           {name}
-          {isNew && <div className="badge badge-secondary">NEW</div>}
+          {isNew && (
+            <div className="badge badge-secondary font-bold">Featured</div>
+          )}
         </h2>
         <p>{description}</p>
         <div className="card-actions justify-end">
